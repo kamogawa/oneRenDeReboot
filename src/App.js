@@ -7,6 +7,9 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
 // コンテナ読み込み
+import ResponsiveDrawer from './containers/ResponsiveDrawer';
+
+// コンテナ読み込み
 import Home from './containers/Home';
 import Info from './containers/Info';
 
@@ -22,11 +25,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/info" component={Info}/>
-          {/* <Route component={WrapMainContent(NotFound)}/> */}
-        </Switch>
+        <ResponsiveDrawer className="ResponsiveDrawer">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/info" component={Info}/>
+            {/* <Route component={WrapMainContent(NotFound)}/> */}
+          </Switch>
+        </ResponsiveDrawer>
       </div>
     );
   }

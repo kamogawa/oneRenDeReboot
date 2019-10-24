@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -21,11 +22,17 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        HOME 
+        유닛 검색
       </div>
     );
   }
 }
+
+// PropTypes
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
 
 // Redux関連
 const mapState = (state, ownProps) => ({
