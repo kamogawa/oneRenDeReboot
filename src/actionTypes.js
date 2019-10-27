@@ -1,4 +1,3 @@
-// 通知系
-export const GET_UNIT_NAME = 'GET_UNIT_NAME';
-
-// 非同期取得
+// 検索
+export const SEARCH_UNIT_NAME = 'SEARCH_UNIT_NAME';
+export const SEARCH_UNIT_PROFILE = 'SEARCH_UNIT_PROFILE';

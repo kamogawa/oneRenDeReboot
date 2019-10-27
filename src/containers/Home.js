@@ -2,12 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
+import { searchUnitName } from '../actions';
 
 // Redux関連
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import { green } from '@material-ui/core/colors';
+
+// AnimeList取得
+import Unitlist from '../containers/Unitlist';
 
 // スタイル
 const styles = theme => ({
@@ -19,10 +28,38 @@ const styles = theme => ({
 
 
 class Home extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      keyword: ''
+    };
+  }
+  // ここだけでしか使わないのでRedux未使用;
+
+  handlingChange = (e)=>{
+    this.setState({
+      keyword: e.target.value
+    })
+  };
+
   render() {
+    const { classes } = this.props;
+    console.log(this.state.keyword);
     return (
       <div>
-        유닛 검색
+        <h1>유닛 검색</h1>
+        <form autoComplete="off">
+          <FormControl className={classes.formControl}>
+            <Input placeholder="캐릭터를 입력하세요" onChange={this.handlingChange}></Input>
+          </FormControl>
+        </form>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={() => searchUnitName(this.state.keyword)}
+        >검색</Button>
+        <Unitlist></Unitlist>
       </div>
     );
   }

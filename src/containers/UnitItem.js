@@ -7,28 +7,38 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
-import { green } from '@material-ui/core/colors';
+
+// コンポーネントの準備
+import Unit from '../components/Unitlist'
 
 // スタイル
 const styles = theme => ({
-  div: {
-    width: '100%',
-    color: green
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
   },
 });
 
-class Info extends React.Component {
+class Unitlist extends React.Component {
   render() {
     return (
       <div>
-        도움말 
+        <Unit name="롤로노아 조로"/>
       </div>
     );
   }
 }
 
+// Material-ui関連
+Unitlist.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
+
 // Redux関連
 const mapState = (state, ownProps) => ({
+  AnimeListReducer: state.AnimeListReducer,
 });
 function mapDispatch(dispatch) {
   return {
@@ -38,5 +48,5 @@ function mapDispatch(dispatch) {
 
 // Material-uiのテーマ設定＋Redux設定
 export default connect(mapState, mapDispatch)(
-  withStyles(styles, { withTheme: true })(Info)
+  withStyles(styles, { withTheme: true })(Unitlist)
 );
