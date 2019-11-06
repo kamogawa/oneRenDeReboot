@@ -40,6 +40,7 @@ Unitlist.propTypes = {
 const mapState = (state, ownProps) => ({
   AnimeListReducer: state.AnimeListReducer,
 });
+
 function mapDispatch(dispatch) {
   return {
     actions: bindActionCreators(actions, dispatch),

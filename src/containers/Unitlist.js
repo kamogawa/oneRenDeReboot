@@ -12,6 +12,7 @@ import * as actions from '../actions';
 // コンポーネントの準備
 import Unit from '../components/Unitlist';
 import Unititem from '../components/Unititem';
+import { tire1, tire2 } from '../unitlist';
 
 // スタイル
 const styles = theme => ({
@@ -26,8 +27,8 @@ class Unitlist extends React.Component {
   render() {
     return (
       <div>
-        <Unit/>
-        <Unititem  />
+        <Unit unitList={tire1}/>
+        <Unititem />
       </div>
     );
   }

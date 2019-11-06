@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 import { searchUnitName } from '../actions';
 
@@ -31,16 +33,22 @@ class Home extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      keyword: ''
+      keyword: '',
+      age: ''
     };
   }
-  // ここだけでしか使わないのでRedux未使用;
-
-  handlingChange = (e)=>{
+  
+  handlingChange = (e) => {
     this.setState({
       keyword: e.target.value
-    })
-  };
+    });
+  }
+
+  selectHandleChange = (e) => {
+    this.setState({
+      keyword: e.target.value
+    });
+  }
 
   render() {
     const { classes } = this.props;
@@ -49,9 +57,33 @@ class Home extends React.Component {
       <div>
         <h1>유닛 검색</h1>
         <form autoComplete="off">
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel 
+              //ref={inputLabel} 
+              id="demo-simple-select-outlined-label"
+            >
+              티어
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={this.state.age}
+              onChange={this.selectHandleChange}
+              labelWidth={'120'}
+            >
+              <MenuItem value="">
+                <em>지정 안함</em>
+              </MenuItem>
+              <MenuItem value={10}>1티어</MenuItem>
+              <MenuItem value={20}>2티어</MenuItem>
+              <MenuItem value={30}>3티어</MenuItem>
+            </Select>
+          </FormControl>
           <FormControl className={classes.formControl}>
             <Input placeholder="캐릭터를 입력하세요" onChange={this.handlingChange}></Input>
           </FormControl>
+
+
         </form>
         <Button
           variant="contained"
@@ -59,7 +91,7 @@ class Home extends React.Component {
           className={classes.button}
           onClick={() => searchUnitName(this.state.keyword)}
         >검색</Button>
-        <Unitlist></Unitlist>
+        <Unitlist ></Unitlist>
       </div>
     );
   }

@@ -13,6 +13,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 
+import Demo from './containers/demo';
 // Router関連
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -31,6 +32,7 @@ const theme = createMuiTheme({
   },
 });
 
+
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme} >
@@ -40,5 +42,9 @@ ReactDOM.render(
     </MuiThemeProvider>
   </Provider>  
   , document.getElementById('root'));
+
+// ReactDOM.render(
+//     <Demo />  
+//     , document.getElementById('root'));
 
 
